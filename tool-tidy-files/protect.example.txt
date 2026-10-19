@@ -1,0 +1,5 @@
+# Folders tool-tidy-files never touches, one path per line (absolute paths).
+# Copy this file to protect.txt and add your own. Lines starting with # are comments.
+# Example (Windows):  D:\Clients\Archive
+# Example (macOS):    /Users/me/Work/Contracts
+# A removable drive, protected when plugged in (start the line with ?):  ?E:\Backup
