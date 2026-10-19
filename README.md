@@ -62,60 +62,17 @@ descărca, așa că robOS te întreabă înainte.
 **Cerințe:** Node.js 18 sau mai nou, pe care robOS îl are deja. Merge pe Windows, macOS și Linux,
 fără pachete de instalat.
 
-### Instalare în robOS: lipește promptul acesta în robOS-ul tău
+### Instalare
 
-robOS-ul tău face totul singur, fără să te întrebe nimic, și îți dă la final un singur raport.
+Lipește în robOS-ul tău:
 
 ```text
-Instalează skill-ul tool-tidy-files din https://github.com/razvan-stack/skilluri-robos
-(făcut de Răzvan Bordeanu pentru comunitatea robOS, licență MIT). Skill-ul face ordine într-un
-folder (Downloads, Desktop, Documente) și găsește dublurile după conținut. Arată planul înainte,
-nu șterge nimic și poate anula orice rulare.
-
-Execută tot de la cap la coadă, fără să-mi pui nicio întrebare. Pașii de mai jos sunt cum s-a
-făcut pe alte instalări robOS. Tu îți cunoști sistemul: unde la tine e altfel, alege singur
-varianta potrivită și scrie în raportul final ce ai ales și de ce.
-
-1. Verifică Node.js 18 sau mai nou (node --version) și scripts/add-skill.js. Dacă există deja
-   un skill tool-tidy-files, nu-l suprascrie: oprește-te și scrie asta în raport. Dacă ai alt
-   skill care organizează fișiere, lasă-l neatins și pomenește-l în raport.
-2. Descarcă repo-ul într-un folder temporar din afara instalării (de exemplu .scratch/), cu git
-   sau ca arhivă ZIP. Copiază doar folderul tool-tidy-files în skills/_catalog/tool-tidy-files.
-3. Rulează node scripts/add-skill.js tool-tidy-files --dry-run și citește SKILL.md și
-   scripts/tidy.mjs. Dacă verdictul nu e „safe” sau găsești ceva suspect, nu instala și explică
-   în raport de ce.
-4. Instalează: node scripts/add-skill.js tool-tidy-files (sau mecanismul tău pentru skill-urile
-   primite din afară).
-5. Testează: node skills/tool-tidy-files/scripts/smoke-tidy.mjs. Lucrează doar într-un folder de
-   probă pe care și-l face și și-l șterge singur și trebuie să se termine cu „0 failed”. Dacă
-   pică, mută skill-ul instalat în coșul robOS (node scripts/safe-delete.js, dacă îl ai), nu-l
-   șterge definitiv, și scrie în raport ce a picat.
-6. Dacă în regulile mele (CLAUDE.local.md, memoria ta) scrie că anumite foldere nu se ating
-   niciodată, pune-le câte unul pe rând, cu calea întreagă, în skills/tool-tidy-files/protect.txt
-   (forma e în protect.example.txt).
-7. La final, un singur raport scurt: ce ai instalat, rezultatul testului, ce ai pus în
-   protect.txt, ce ai făcut altfel decât scrie aici și de ce, și cum îl folosesc (de exemplu
-   „fă ordine în Downloads”). Nu rula nicio organizare reală.
+Instalează skill-ul tool-tidy-files din https://github.com/razvan-stack/skilluri-robos, după pașii din INSTALL.md. Fără nicio întrebare; la final, un singur raport.
 ```
 
-Sau, de mână, din folderul robOS:
-
-```bash
-git clone https://github.com/razvan-stack/skilluri-robos ../skilluri-robos
-cp -r ../skilluri-robos/tool-tidy-files skills/_catalog/tool-tidy-files
-node scripts/add-skill.js tool-tidy-files --dry-run   # verificarea de securitate, fără să instaleze
-node scripts/add-skill.js tool-tidy-files
-node skills/tool-tidy-files/scripts/smoke-tidy.mjs   # trebuie să se termine cu „0 failed”
-```
-
-În PowerShell, pe Windows, copierea se face cu
-`Copy-Item -Recurse ..\skilluri-robos\tool-tidy-files skills\_catalog\tool-tidy-files`.
-
-### Fără robOS (doar Claude Code)
-
-Copiază folderul `tool-tidy-files` în `~/.claude/skills/` (pe Windows,
-`%USERPROFILE%\.claude\skills\`). Claude Code îl găsește singur. Fișierele de lucru ajung atunci
-în folderul temporar al sistemului.
+Pașii pe care îi urmează robOS-ul sunt în [INSTALL.md](INSTALL.md): verificare, descărcare,
+verificarea de securitate a robOS, instalare, test, potrivirea cu regulile tale, raport. Tot acolo
+scrie cum îl pui în Claude Code fără robOS.
 
 ### Cum îl folosești
 
@@ -186,9 +143,9 @@ dependencies, Windows, macOS and Linux. Tested: 61 checks on Linux, 62 on Window
 adversarial scenarios on Windows and 26 on Linux (including real FAT32 and exFAT disks), and a
 three-round separate code review aimed at data loss; not yet run on macOS.
 
-Install in robOS: copy `tool-tidy-files` to `skills/_catalog/`, then
-`node scripts/add-skill.js tool-tidy-files`. Without robOS: copy it to `~/.claude/skills/`.
-Test: `node scripts/smoke-tidy.mjs` (inside the skill folder) must end with `0 failed`.
+Install: tell your robOS "Install the tool-tidy-files skill from
+https://github.com/razvan-stack/skilluri-robos following INSTALL.md. No questions; one report at
+the end." The steps are in [INSTALL.md](INSTALL.md).
 
 ## Licență / License
 
