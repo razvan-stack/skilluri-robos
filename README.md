@@ -64,37 +64,38 @@ fără pachete de instalat.
 
 ### Instalare în robOS: lipește promptul acesta în robOS-ul tău
 
+robOS-ul tău face totul singur, fără să te întrebe nimic, și îți dă la final un singur raport.
+
 ```text
-Îți propun să instalezi skill-ul tool-tidy-files, făcut de Răzvan Bordeanu pentru comunitatea robOS.
-Face ordine într-un folder (Downloads, Desktop, Documente) și găsește dublurile după conținut.
-Arată planul înainte, nu șterge nimic și poate anula orice rulare.
-Sursa: https://github.com/razvan-stack/skilluri-robos (licență MIT).
+Instalează skill-ul tool-tidy-files din https://github.com/razvan-stack/skilluri-robos
+(făcut de Răzvan Bordeanu pentru comunitatea robOS, licență MIT). Skill-ul face ordine într-un
+folder (Downloads, Desktop, Documente) și găsește dublurile după conținut. Arată planul înainte,
+nu șterge nimic și poate anula orice rulare.
 
-Mai jos e o variantă pe care o poți aplica. Tu îți cunoști sistemul mai bine decât noi, așa că
-verifică întâi la tine dacă se potrivește și dacă ai o cale mai bună. Spune-mi ce ai găsit și
-ce variantă alegi înainte să schimbi ceva.
+Execută tot de la cap la coadă, fără să-mi pui nicio întrebare. Pașii de mai jos sunt cum s-a
+făcut pe alte instalări robOS. Tu îți cunoști sistemul: unde la tine e altfel, alege singur
+varianta potrivită și scrie în raportul final ce ai ales și de ce.
 
-1. Verificări (propunere): versiunea ta de robOS, Node.js 18 sau mai nou (node --version),
-   existența lui scripts/add-skill.js. Uită-te dacă ai deja un skill numit tool-tidy-files sau
-   alt skill care organizează fișiere (de exemplu tool-file-organizer). Dacă ai, nu-l scoate și
-   nu-l suprascrie: spune-mi și întreabă-mă ce vreau.
-2. Descărcare (propunere): clonează repo-ul într-un folder temporar din afara instalării (de
-   exemplu .scratch/), sau descarcă arhiva ZIP de pe GitHub dacă nu ai git. Copiază doar
-   folderul tool-tidy-files în skills/_catalog/tool-tidy-files.
-3. Verificarea de securitate (propunere): node scripts/add-skill.js tool-tidy-files --dry-run.
-   E cod care mută fișiere, așa că citește tu SKILL.md și scripts/tidy.mjs înainte de
-   instalare. Dacă verdictul nu e „safe” sau vezi ceva ce nu-ți place, oprește-te și spune-mi.
-4. Instalare (propunere): node scripts/add-skill.js tool-tidy-files. Dacă instalarea ta are alt
-   mecanism pentru skill-urile primite din afară, folosește-l pe acela și spune-mi de ce.
-5. Test (propunere): node skills/tool-tidy-files/scripts/smoke-tidy.mjs. Lucrează doar într-un
-   folder de probă pe care și-l face singur și pe care îl șterge la final. Trebuie să se termine
-   cu „0 failed”. Dacă pică, oprește-te și arată-mi ce a picat.
-6. Personalizare (propunere): întreabă-mă dacă am foldere care nu trebuie atinse niciodată. Dacă
-   da, pune-le câte unul pe rând în skills/tool-tidy-files/protect.txt (forma e în
-   protect.example.txt). Dacă am reguli proprii despre ștergeri sau dubluri (în CLAUDE.local.md
-   sau în memoria ta), verifică dacă skill-ul le respectă și spune-mi unde nu.
-7. Raport: spune-mi pe scurt ce ai găsit, ce ai instalat, rezultatul testului și cum îl folosesc.
-   Nu rula acum nicio organizare reală: prima rulare o cer eu.
+1. Verifică Node.js 18 sau mai nou (node --version) și scripts/add-skill.js. Dacă există deja
+   un skill tool-tidy-files, nu-l suprascrie: oprește-te și scrie asta în raport. Dacă ai alt
+   skill care organizează fișiere, lasă-l neatins și pomenește-l în raport.
+2. Descarcă repo-ul într-un folder temporar din afara instalării (de exemplu .scratch/), cu git
+   sau ca arhivă ZIP. Copiază doar folderul tool-tidy-files în skills/_catalog/tool-tidy-files.
+3. Rulează node scripts/add-skill.js tool-tidy-files --dry-run și citește SKILL.md și
+   scripts/tidy.mjs. Dacă verdictul nu e „safe” sau găsești ceva suspect, nu instala și explică
+   în raport de ce.
+4. Instalează: node scripts/add-skill.js tool-tidy-files (sau mecanismul tău pentru skill-urile
+   primite din afară).
+5. Testează: node skills/tool-tidy-files/scripts/smoke-tidy.mjs. Lucrează doar într-un folder de
+   probă pe care și-l face și și-l șterge singur și trebuie să se termine cu „0 failed”. Dacă
+   pică, mută skill-ul instalat în coșul robOS (node scripts/safe-delete.js, dacă îl ai), nu-l
+   șterge definitiv, și scrie în raport ce a picat.
+6. Dacă în regulile mele (CLAUDE.local.md, memoria ta) scrie că anumite foldere nu se ating
+   niciodată, pune-le câte unul pe rând, cu calea întreagă, în skills/tool-tidy-files/protect.txt
+   (forma e în protect.example.txt).
+7. La final, un singur raport scurt: ce ai instalat, rezultatul testului, ce ai pus în
+   protect.txt, ce ai făcut altfel decât scrie aici și de ce, și cum îl folosesc (de exemplu
+   „fă ordine în Downloads”). Nu rula nicio organizare reală.
 ```
 
 Sau, de mână, din folderul robOS:
