@@ -41,7 +41,8 @@ potrivită și scrie în raportul final ce ai ales și de ce. Te oprești doar u
    - rezultatul testului;
    - ce ai potrivit cu regulile lui;
    - ce ai făcut altfel decât scrie aici și de ce;
-   - cum se folosește skill-ul (frazele de pornire sunt în `SKILL.md`, la `triggers`).
+   - cum se folosește skill-ul: exemplele din `README.md`, secțiunea „Cum îl folosești” a
+     skill-ului, așa cum sunt scrise acolo.
 
    Nu rula nicio lucrare reală cu skill-ul: prima rulare o cere omul.
 

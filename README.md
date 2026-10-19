@@ -76,18 +76,36 @@ scrie cum îl pui în Claude Code fără robOS.
 
 ### Cum îl folosești
 
-- „Fă ordine în Downloads.”
+Câteva exemple de cereri, pe care le scrii în robOS cu cuvintele tale.
+
+**Organizare**
+- „Fă ordine în Downloads.” Sortează pe tipuri: Documente, PDF, Imagini, Capturi de ecran, Video…
+- „Organizează Documentele după an.” Sau „…după tip și an”.
+- „Mută fișierele de pe Desktop în proiectele mele din D:\Proiecte.”
+- „Organizează Documentele după metoda PARA.” Proiecte, responsabilități, resurse, arhivă.
+- „Redenumește PDF-urile cu nume fără sens după titlul lor.” robOS deschide fișierele și propune
+  numele.
+
+**Doar te uiți, fără să muți nimic**
+- „Spune-mi ce e în Downloads, fără să muți nimic.”
 - „Găsește fișierele duble din Documente și spune-mi cât spațiu ocupă.”
-- „Mută fișierele din Desktop în proiectele mele din D:\Proiecte.”
-- „Organizează folderul ăsta după an.”
+
+**Doar dublurile**
+- „Pune deoparte dublurile din Downloads, restul lasă-l cum e.”
+
+**Siguranță**
+- „Fă întâi o probă pe 20 de fișiere.”
+- „Folderul D:\Clienți nu-l atinge niciodată.” Intră în `protect.txt` și rămâne protejat la orice
+  rulare.
 - „Anulează ultima organizare.”
+- „Unde e carantina și cât ocupă?” Carantina o golești tu, după ce te-ai uitat prin ea.
 
 Pentru fiecare cerere primești întâi un rezumat al folderului, apoi planul, cu fiecare destinație
 și fiecare dublură. Abia după ce îl aprobi se mută ceva.
 
 ### Cum a fost testat
 
-- **Testul care vine cu skill-ul** (`scripts/smoke-tidy.mjs`): 61 de verificări pe Linux și 62 pe
+- **Testul care vine cu skill-ul** (`scripts/smoke-tidy.mjs`): 62 de verificări pe Linux și 63 pe
   Windows. Construiește un folder dezordonat de probă, cu toate capcanele de mai jos, rulează tot
   ciclul și verifică la final că anularea a pus fiecare fișier la loc, octet cu octet.
 - **Atacuri dinadins**: 21 de scenarii pe Windows și 26 pe Linux (cinci țin doar de Windows,
@@ -139,7 +157,7 @@ identical copies go to a quarantine folder on the same disk. It never overwrites
 project, site or program folders, never follows links out of the folder, never touches system
 folders, `desktop.ini`-type files or the robOS installation, and undoes a whole run with one
 command. Your permanent off-limits folders go in `tool-tidy-files/protect.txt`. Node.js 18+, no
-dependencies, Windows, macOS and Linux. Tested: 61 checks on Linux, 62 on Windows, 21
+dependencies, Windows, macOS and Linux. Tested: 62 checks on Linux, 63 on Windows, 21
 adversarial scenarios on Windows and 26 on Linux (including real FAT32 and exFAT disks), and a
 three-round separate code review aimed at data loss; not yet run on macOS.
 

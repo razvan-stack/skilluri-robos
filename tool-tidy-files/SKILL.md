@@ -68,7 +68,7 @@ Commands, from the robOS folder (outside robOS, use the path of this skill's `sc
 
 ```bash
 node skills/tool-tidy-files/scripts/tidy.mjs scan  "<folder>" [--protect "<path>"]... [--max-hash-mb N] [--no-dupes]
-node skills/tool-tidy-files/scripts/tidy.mjs plan  "<scan.json>" --mode type|date|type-date|projects|para --lang ro|en [--projects "<subfolder>"] [--all-depths] [--dupes report]
+node skills/tool-tidy-files/scripts/tidy.mjs plan  "<scan.json>" --mode type|date|type-date|projects|para|dupes --lang ro|en [--projects "<subfolder>"] [--all-depths] [--dupes report]
 node skills/tool-tidy-files/scripts/tidy.mjs check "<plan.json>"
 node skills/tool-tidy-files/scripts/tidy.mjs apply "<plan.json>" --yes [--limit 20]
 node skills/tool-tidy-files/scripts/tidy.mjs undo  "<folder>" [--run <id>]
@@ -91,7 +91,8 @@ Modes: `type` (Documents, PDF, Images/Screenshots, Images/Photos, Video, Archive
 (files go to the operator's existing project folders whose names and contents share words with
 the file name; a file goes only when one project clearly wins), `para` (files untouched for
 `--archive-months`, default 12, go to 4-Archive/<year>; you place the rest in 1-Projects,
-2-Areas, 3-Resources with the operator). `--lang ro` gives Romanian folder names; pass the
+2-Areas, 3-Resources with the operator), `dupes` (only the extra identical copies go to
+quarantine; every other file stays where it is). `--lang ro` gives Romanian folder names; pass the
 operator's working language.
 
 ## Constraints, each with its reason

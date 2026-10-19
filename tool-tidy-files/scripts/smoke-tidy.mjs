@@ -106,6 +106,9 @@ try {
   ok(plan.entries.some((e) => e.to === 'Imagini/Capturi de ecran/Screenshot 2026-10-01 at 10.00.00.png'), 'screenshot goes to Imagini/Capturi de ecran');
 
   p = run('check', planFile); ok(p.status === 0, 'valid plan passes check: ' + p.stdout.slice(0, 300));
+  run('plan', path.join(out1, 'scan.json'), '--mode', 'dupes', '--out', path.join(out1, 'plan-dupes.json'));
+  const pd = read(path.join(out1, 'plan-dupes.json'));
+  ok(pd.entries.length === 2 && pd.entries.every((e) => e.kind === 'quarantine'), 'mode dupes only sets the extra copies aside and moves nothing else');
 
   const bad = (mutate, label) => {
     const b = read(planFile); mutate(b); const f = path.join(out1, 'bad.json'); fs.writeFileSync(f, JSON.stringify(b));

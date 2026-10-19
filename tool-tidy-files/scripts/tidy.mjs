@@ -9,7 +9,7 @@
 //
 //   node tidy.mjs scan  <folder> [--out DIR] [--protect PATH]... [--max-files N]
 //                       [--max-hash-mb N] [--no-dupes] [--force-root] [--allow-drive-root]
-//   node tidy.mjs plan  <scan.json> --mode type|date|type-date|projects|para
+//   node tidy.mjs plan  <scan.json> --mode type|date|type-date|projects|para|dupes
 //                       [--projects DIR] [--lang ro|en] [--all-depths]
 //                       [--dupes quarantine|report] [--archive-months 12] [--out plan.json]
 //   node tidy.mjs check <plan.json>
@@ -630,7 +630,8 @@ function cmdPlan(args) {
   const scanFile = args._[1]; if (!scanFile) die('usage: plan <scan.json> --mode ...');
   const scan = readJson(scanFile);
   if (scan.tool !== 'tidy-files') die('not a tidy-files scan');
-  const mode = args.mode; if (!['type', 'date', 'type-date', 'projects', 'para'].includes(mode)) die('--mode must be type, date, type-date, projects or para');
+  const mode = args.mode; if (!['type', 'date', 'type-date', 'projects', 'para', 'dupes'].includes(mode)) die('--mode must be type, date, type-date, projects, para or dupes');
+  if (mode === 'dupes' && args.dupes === 'report') die('--mode dupes sets duplicates aside; it cannot be combined with --dupes report');
   const lang = (args.lang || process.env.ROBOS_LANG || 'en').toLowerCase().startsWith('ro') ? 'ro' : 'en';
   const lab = LABELS[lang]; const root = scan.root;
   const allDepths = Boolean(args['all-depths']);
@@ -681,6 +682,7 @@ function cmdPlan(args) {
     return lab[f.cat] || lab.other;
   };
   for (const f of scan.files) {
+    if (mode === 'dupes') break; // only the identical copies are set aside; every other file stays where it is
     if (!inScope(f) || quarantined.has(f.p)) continue;
     if (f.flags.includes('partial')) { review.partial.push(f.p); continue; }
     if (f.flags.includes('lockfile')) { review.lockfiles.push(f.p); continue; }
